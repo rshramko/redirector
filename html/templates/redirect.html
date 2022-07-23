@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="refresh" content="{{.RedirectIn}};url={{.RedirectUrl}}" />
+    <title>{{.Title}} Moved</title>
+    <style type="text/css">
+      <!--
+        html, body {
+          margin: 0;
+          padding: 0;
+          border: 0;
+        }
+        body {
+          color: #000;
+          background: #fff;
+          font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        .msg {
+          text-align: center;
+          margin-top: 2%;
+        }
+        -->
+    </style>
+  </head>
+  <body>
+    <div class="msg">
+      <p>
+        {{.Title}} has been moved to
+        <a href="{{.RedirectUrl}}">{{.RedirectUrl}}</a>
+      </p>
+
+      {{if .ExtraMessage}}
+      <p>
+        <strong> {{.ExtraMessage}} </strong>
+      </p>
+      {{end}}
+
+      <p>
+        You will be automatically redirected in
+        <span id="countdown">{{.RedirectIn}}</span> seconds...
+      </p>
+    </div>
+
+    <script type="text/javascript">
+      var seconds = {{.RedirectIn}};
+
+      function countdown() {
+        if (seconds === 0) {
+          window.location = "{{.RedirectUrl}}";
+        } else {
+          document.getElementById("countdown").innerHTML = seconds;
+          window.setTimeout("countdown()", 1000);
+          seconds = seconds - 1;
+        }
+      }
+
+      countdown();
+    </script>
+  </body>
+</html>
