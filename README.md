@@ -6,10 +6,10 @@ It starts an http service on a given port, which returns an html page with autom
 
 ### How to build
 
-You need to have [Go Lang](https://go.dev/) installed. Execute from the root of the repo:
+You are going to need to have the [Go](https://go.dev/) compiler installed. Execute from the root of the repo:
 
 ```
-$ go build
+$ go build -ldflags "-s -w"
 ```
 
 ### Example of usage:
